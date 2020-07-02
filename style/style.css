@@ -40,10 +40,13 @@ html{
     height: 75vh;
     margin-top: -45px;
     z-index: 10;
-    animation: adeInUpShort 2s ease;
+    animation: bounceInUp 2s ease;
 }
 .our{
     font-size: 3rem;
+}
+.welcom{
+    animation: fadeInUpShort 4s ease 1s;
 }
 .welcome-img{
     position: relative;
@@ -66,9 +69,13 @@ form{
     left: 50%;
     transform: translate(-50%,-50%);
 }
+.welcome-img{
+    animation: fadeInLeft 2s ease;
+}
 .welcome-word{
     margin-left: 3rem;
     max-width: 40%;
+    animation: fadeInRight 2s ease
 }
 .boda{
     background-color: #E5B710;
@@ -78,6 +85,7 @@ form{
     border-left: solid 2px #E5B710;
     padding: 1rem;
 }
+
 .wel-2{
     border-bottom: solid 2px #E5B710;
     border-right: solid 2px #E5B710;
@@ -92,6 +100,11 @@ form{
     background-color: rgba(255, 255, 255, 0.664);
     padding: .5rem;
 }
+
+.f2:hover{
+    animation: sonarEffect 1s ease;
+}
+
 .br{
     border-radius: 25px;
     padding: .5rem;
@@ -100,12 +113,19 @@ form{
 }
 .services{
     padding: 4%;
+    animation: fadeInUpShort 5s ease 2s;
 }
+
 .products{
     padding: 4%;
+    animation: fadeInUpShort 5s ease 4s;
 }
 .product{
     position: relative;
+}
+
+.product:hover{
+    animation: pulse 1s ease ;
 }
 .price{
     background-color: #E5B710;
@@ -161,10 +181,16 @@ form{
     border-radius: 25px;
     text-decoration: none;
 }
+
+.bg-all:hover{
+    animation: shake 2s ease infinite;
+}
 .welcon{
     animation: upAndDown 3s ease infinite;
 }
-
+.col-md-4:hover{
+ animation: pulse 1s ease;
+}
 /* Animation for moving Up and Down */
 @keyframes upAndDown{
     0%{
@@ -178,25 +204,31 @@ form{
     }
 }
 
-@keyframes wiggle { 
-    0% { transform: skewX(9deg); } 
-    10% { transform: skewX(-8deg); } 
-    20% { transform: skewX(7deg); } 
-    30% { transform: skewX(-6deg); } 
-    40% { transform: skewX(5deg); } 
-    50% { transform: skewX(-4deg); } 
-    60% { transform: skewX(3deg); } 
-    70% { transform: skewX(-2deg); } 
-    80% { transform: skewX(1deg); } 
-    90% { transform: skewX(0deg); } 
-    100% { transform: skewX(0deg); } 
+@keyframes sonarEffect {
+	0% {
+		opacity: 0.3;
+	}
+	40% {
+		opacity: 0.5;
+		box-shadow: 0 0 0 2px rgba(255,255,255,0.1), 0 0 10px 10px #999999, 0 0 0 10px rgba(255,255,255,0.5);
+	}
+	100% {
+		box-shadow: 0 0 0 2px rgba(255,255,255,0.1), 0 0 10px 10px #999999, 0 0 0 10px rgba(255,255,255,0.5);
+		-webkit-transform: scale(1.5);
+		opacity: 0;
+	}
+}
+@keyframes shake { 
+    0%, 100% {transform: translateX(0);} 
+    10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);} 
+    20%, 40%, 60%, 80% {transform: translateX(10px);} 
 }
 
 @keyframes fadeInUpShort { 
     0% { 
         opacity: 0; 
-        -webkit-transform: translateY(20px); 
-    } 
+        -webkit-transform: translateY(70px); 
+    }
     100% { 
         opacity: 1; 
         -webkit-transform: translateY(0); 
@@ -217,27 +249,87 @@ form{
     } 
 } 
 
-@keyframes flip { 
+@keyframes bounceInUp { 
     0% { 
-        -webkit-transform: perspective(400px) rotateY(0); 
-        -webkit-animation-timing-function: ease-out; 
+        opacity: 0; 
+        
+        transform: translateY(400px); 
     } 
-    40% { 
-        -webkit-transform: perspective(400px) translateZ(150px) rotateY(170deg); 
-        -webkit-animation-timing-function: ease-out; 
-    } 
-    50% { 
-        -webkit-transform: perspective(400px) translateZ(150px) rotateY(190deg) scale(1); 
-        -webkit-animation-timing-function: ease-in; 
+    60% { 
+       
+        transform: translateY(-30px); 
     } 
     80% { 
-        -webkit-transform: perspective(400px) rotateY(360deg) scale(.95); 
-        -webkit-animation-timing-function: ease-in; 
+        transform: translateY(10px); 
+    } 
+    100% {
+        opacity: 1;
+         
+        transform: translateY(0); 
+    } 
+}
+
+@keyframes growIn { 
+    0% { 
+        transform: scale(0.2); 
+        opacity:0;
+    } 
+    50% { 
+        transform: scale(1.2); 
+        
     } 
     100% { 
-        -webkit-transform: perspective(400px) scale(1); 
-        -webkit-animation-timing-function: ease-in; 
+        transform: scale(1); 
+        opacity:1;
     } 
+}
+
+@keyframes fadeInRight { 
+    0% { 
+        opacity: 0; 
+        transform: translateX(400px); 
+    } 
+    50%{
+       opacity: 0.3; 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateX(0); 
+    } 
+}
+
+@keyframes fadeInLeft { 
+    0% { 
+        opacity: 0; 
+        transform: translateX(-400px); 
+    } 
+    50%{
+       opacity: 0.3; 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateX(0); 
+    } 
+}
+
+@keyframes fadeInUp { 
+    0% { 
+        opacity: 0; 
+        transform: translateY(400px); 
+    } 
+    50%{
+       opacity: 0.3; 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+}
+
+@keyframes pulse { 
+    0% { transform: scale(1); } 
+    50% { transform: scale(1.1); } 
+    100% { transform: scale(1); } 
 }
 
 /* Meia Query for System */
